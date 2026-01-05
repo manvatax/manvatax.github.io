@@ -2,1084 +2,162 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
-    <title>MANVATAX računovodstvo i porezi</title>
+    <title>Сајт у изради</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MANVATAX računovodstvo i porezi – porodična agencija za knjigovodstvo, računovodstvo i poresko savetovanje.">
-    <link rel="canonical" href="https://www.manvatax.rs/">
+    <meta name="robots" content="noindex,nofollow">
+
     <style>
         :root {
-            --primary: #0b1120;      /* tamno plava */
-            --primary-2: #1e293b;    /* slate plava */
-            --accent: #60a5fa;       /* svetlo plava */
-            --bg: #e5e7eb;           /* siva pozadina */
-            --text: #0f172a;
+            --bg: #0b1120;
+            --card: #111827;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #60a5fa;
+            --logo-bg: #0a0f1f;
         }
 
-        * { box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        }
 
         body {
-            margin: 0;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            background: radial-gradient(circle at top left, #f8fafc 0, #e5e7eb 40%, #d4d4d8 100%);
+            min-height: 100vh;
+            background: radial-gradient(circle at top, #1e293b, var(--bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text);
-            line-height: 1.6;
-        }
-
-        a { color: inherit; text-decoration: none; }
-
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: linear-gradient(135deg, var(--primary), var(--primary-2));
-            color: white;
-            box-shadow: 0 10px 30px rgba(15,23,42,0.4);
-            padding: 0.4rem 0 0.7rem;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 1.5rem 0.4rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-        }
-
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 1.1rem;
-        }
-
-        .logo-symbol {
-            padding: 0.75rem 1.6rem;
-            border-radius: 999px;
-            border: 3px solid rgba(148,163,184,0.8);
-            font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: 0.18em;
-            background: radial-gradient(circle at top left,#0b1120,#020617);
-            box-shadow: 0 18px 38px rgba(0,0,0,0.6);
-            white-space: nowrap;
-        }
-
-        .logo-symbol span { color: #e5e7eb; }
-
-        .logo-text-main { font-weight: 800; font-size: 1.25rem; }
-        .logo-text-sub  { font-size: 0.95rem; opacity: 0.92; }
-
-        .nav-links {
-            display: flex;
-            gap: 0.9rem;
-            font-size: 0.95rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            padding: 0.35rem 0.9rem;
-            border-radius: 999px;
-        }
-
-        .nav-links a:hover { background: rgba(15,23,42,0.7); }
-
-        /* JEZICI GORE DESNO */
-        .lang-switch {
-            position: absolute;
-            top: 6px;
-            right: 10px;
-            display: flex;
-            gap: 0.3rem;
-        }
-
-        .lang-btn {
-            border-radius: 999px;
-            border: 1px solid rgba(148,163,184,0.9);
-            background: rgba(15,23,42,0.9);
-            color: #e5e7eb;
-            font-size: 0.75rem;
-            padding: 0.15rem 0.55rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            white-space: nowrap;
-        }
-
-        .lang-btn img {
-            height: 14px;
-            width: auto;
-            border-radius: 2px;
-        }
-
-        .lang-btn.active {
-            background: #e5e7eb;
-            color: #020617;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2.2rem 1.2rem 3.2rem;
-        }
-
-        /* HERO */
-        .hero {
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 2.4rem;
-            padding: 2.6rem 0 2.1rem;
-            align-items: center;
-        }
-
-        .hero h1 {
-            font-size: clamp(2rem, 3.1vw, 2.7rem);
-            margin: 0 0 0.75rem;
-            color: #0f172a;
-        }
-
-        .hero p.lead {
-            font-size: 1rem;
-            margin: 0 0 1.3rem;
-            color: #4b5563;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.9rem;
-            align-items: center;
-            margin-bottom: 1.1rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            border-radius: 999px;
-            padding: 0.78rem 1.6rem;
-            font-size: 0.95rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-        .btn-primary:hover { filter: brightness(1.08); }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            border-radius: 999px;
-            padding: 0.68rem 1.5rem;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-
-        .hero-meta { font-size: 0.82rem; color: #6b7280; }
-
-        .hero-card {
-            background: rgba(255,255,255,0.98);
-            border-radius: 1.1rem;
-            padding: 1.5rem;
-            box-shadow: 0 18px 45px rgba(15,23,42,0.22);
-            border: 1px solid #cbd5e1;
-        }
-
-        .hero-card h2 { font-size: 1.05rem; margin-top: 0; color: #0f172a; }
-
-        .hero-list {
-            list-style: none;
-            padding: 0;
-            margin: 0.7rem 0 0;
-            font-size: 0.9rem;
-        }
-
-        .hero-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.45rem;
-            margin-bottom: 0.45rem;
-        }
-
-        .hero-list li::before {
-            content: "▸";
-            color: var(--primary-2);
-            margin-top: 0.05rem;
-            font-size: 0.8rem;
-        }
-
-        /* SECTIONS & SCROLL OFFSET */
-        section {
-            margin-top: 2.7rem;
-            scroll-margin-top: 130px;
-        }
-
-        section h2 {
-            font-size: 1.45rem;
-            margin-bottom: 0.9rem;
-            color: #0f172a;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.6rem;
         }
 
         .card {
-            background: rgba(248,250,252,0.98);
-            border-radius: 0.95rem;
-            padding: 1.15rem 1.25rem;
-            border: 1px solid #cbd5e1;
+            background: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(6px);
+            border-radius: 16px;
+            padding: 48px 40px;
+            max-width: 520px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
 
-        .card h3 { margin-top: 0; font-size: 1.05rem; color: #0f172a; }
-
-        ul.clean {
-            list-style: none;
-            padding: 0;
-            margin: 0.35rem 0 0;
-            font-size: 0.9rem;
-        }
-        ul.clean li { margin-bottom: 0.35rem; }
-
-        .highlight {
-            background: #e2e8f0;
-            border-left: 4px solid var(--accent);
-            padding: 0.75rem 0.9rem;
-            border-radius: 0.45rem;
-            font-size: 0.9rem;
-            color: #1f2937;
-        }
-
-        /* PRICING */
-        .price-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.1rem;
-        }
-
-        .price-item {
-            background: rgba(248,250,252,0.98);
-            border-radius: 0.95rem;
-            padding: 1.05rem 1.15rem;
-            border: 1px solid #cbd5e1;
-        }
-
-        .price-item strong {
-            display: block;
-            margin-bottom: 0.4rem;
-            color: #0f172a;
-        }
-
-        .note { font-size: 0.8rem; color: #64748b; margin-top: 0.4rem; }
-
-        /* CONTACT & LINKS */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 1.6rem;
-            align-items: flex-start;
-        }
-
-        form {
-            background: rgba(248,250,252,0.98);
-            border-radius: 0.95rem;
-            padding: 1.25rem 1.25rem 3.2rem; /* više mesta dole zbog broja */
-            border: 1px solid #cbd5e1;
-            position: relative; /* omogućava pozicioniranje broja */
-        }
-
-        .field { margin-bottom: 0.85rem; }
-
-        .field label {
-            display: block;
-            font-size: 0.85rem;
-            margin-bottom: 0.25rem;
-            color: #374151;
-        }
-
-        .field input,
-        .field textarea {
-            width: 100%;
-            padding: 0.48rem 0.6rem;
-            border-radius: 0.45rem;
-            border: 1px solid #cbd5e1;
-            font: inherit;
-            background: #f9fafb;
-        }
-
-        .field input:focus,
-        .field textarea:focus {
-            outline: 1px solid var(--primary);
-            background: #ffffff;
-        }
-
-        .field textarea {
-            min-height: 90px;
-            resize: vertical;
-        }
-
-        .contact-info { font-size: 0.9rem; }
-
-        /* broj dole desno u formi */
-        .form-phone {
-            position: absolute;
-            right: 14px;
-            bottom: 14px;
-            font-size: 0.85rem;
-            color: #334155;
-            background: rgba(255,255,255,0.9);
-            border: 1px solid #cbd5e1;
+        /* LOGO */
+        .logo-wrap {
+            display: inline-block;
+            padding: 10px 22px;
             border-radius: 999px;
-            padding: 0.35rem 0.7rem;
-        }
-        .form-phone a { color: inherit; font-weight: 700; }
-        .form-phone a:hover { text-decoration: underline; }
-
-        .links-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.95rem;
+            background: linear-gradient(145deg, #0b132f, #020617);
+            box-shadow: inset 0 0 0 1px rgba(96,165,250,0.25);
+            margin-bottom: 22px;
         }
 
-        .link-item {
-            background: rgba(248,250,252,0.98);
-            border-radius: 0.75rem;
-            border: 1px solid #cbd5e1;
-            padding: 0.8rem 0.9rem;
-            font-size: 0.9rem;
-        }
-
-        .link-item a {
+        .logo {
+            font-size: 22px;
             font-weight: 600;
-            color: var(--primary-2);
+            letter-spacing: 3px;
+            color: #e5e7eb;
+            white-space: nowrap;
+        }
+
+        .logo .sep {
+            color: var(--accent);
+            margin: 0 8px;
+            font-weight: 300;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: rgba(96, 165, 250, 0.15);
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--muted);
+            margin-bottom: 18px;
+        }
+
+        .text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #d1d5db;
+            margin-bottom: 26px;
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 15px;
+            align-items: center;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 10px;
         }
 
-        .link-logo{
-            width: 22px;
-            height: 22px;
-            border-radius: 4px;
-            flex: 0 0 22px;
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent);
         }
 
         footer {
-            border-top: 1px solid #cbd5e1;
-            padding: 1rem;
-            font-size: 0.8rem;
-            text-align: center;
-            color: #64748b;
-            background: #e5e7eb;
-        }
-
-        /* MOBILE MENU + QUICK ACTIONS */
-        .menu-btn {
-            display: none;
-            border-radius: 12px;
-            border: 1px solid rgba(148,163,184,0.9);
-            background: rgba(15,23,42,0.9);
-            color: #e5e7eb;
-            font-size: 1.05rem;
-            padding: 0.45rem 0.75rem;
-            cursor: pointer;
-            white-space: nowrap;
-            line-height: 1;
-        }
-
-        .menu-btn:active { transform: translateY(1px); }
-
-        .quick-actions {
-            display: none;
-            gap: 0.7rem;
-            margin: 0.9rem 0 0.3rem;
-        }
-
-        .quick-actions a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            padding: 0.7rem 1rem;
-            border-radius: 999px;
-            border: 1px solid #cbd5e1;
-            background: rgba(248,250,252,0.98);
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .quick-actions a.primary {
-            background: var(--primary);
-            color: white;
-            border-color: transparent;
-        }
-
-        .quick-actions a:hover { filter: brightness(1.05); }
-
-        @media (max-width: 768px) {
-            header { padding-top: 1.35rem; }
-
-            .hero { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-
-            .nav {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
-            }
-
-            .menu-btn { display: inline-flex; }
-
-            .nav-links {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 0.45rem;
-                flex-wrap: nowrap;
-            }
-
-            .nav-links.open { display: flex; }
-
-            .nav-links a {
-                width: 100%;
-                padding: 0.65rem 0.9rem;
-                background: rgba(15,23,42,0.25);
-                border-radius: 12px;
-            }
-
-            .lang-switch {
-                top: 6px;
-                right: 8px;
-                gap: 0.2rem;
-            }
-            .lang-btn {
-                font-size: 0.68rem;
-                padding: 0.12rem 0.45rem;
-            }
-            .lang-btn img { height: 12px; }
-
-            .quick-actions { display: flex; }
+            margin-top: 32px;
+            font-size: 13px;
+            color: var(--muted);
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="nav">
-        <div class="logo-wrapper">
-            <div class="logo-symbol">
-                <span>M | An | Va | Ta | X</span>
-            </div>
-            <div>
-                <div class="logo-text-main" data-i18n="logo_title">MANVATAX</div>
-                <div class="logo-text-sub" data-i18n="logo_subtitle">Računovodstvo i porezi</div>
-            </div>
+<div class="card">
+
+    <!-- LOGO -->
+    <div class="logo-wrap">
+        <div class="logo">
+            M <span class="sep">|</span> An <span class="sep">|</span> Va <span class="sep">|</span> Ta <span class="sep">|</span> X
         </div>
-
-        <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
-
-        <nav class="nav-links" id="navLinks">
-            <a href="#services" data-i18n="nav_services">Usluge</a>
-            <a href="#pricing" data-i18n="nav_pricing">Cene</a>
-            <a href="#about" data-i18n="nav_about">O nama</a>
-            <a href="#contact" data-i18n="nav_contact">Kontakt</a>
-            <a href="#links" data-i18n="nav_links">Linkovi</a>
-        </nav>
     </div>
 
-    <!-- JEZICI: prvo ćirilica, pa latinica -->
-    <div class="lang-switch">
-        <button class="lang-btn active" data-lang="sr_cyr">
-            <img src="https://flagcdn.com/w20/rs.png" alt="СР">ћир
-        </button>
-        <button class="lang-btn" data-lang="sr_lat">
-            <img src="https://flagcdn.com/w20/rs.png" alt="SR">lat
-        </button>
-        <button class="lang-btn" data-lang="en">
-            <img src="https://flagcdn.com/w20/gb.png" alt="EN">EN
-        </button>
-        <button class="lang-btn" data-lang="ru">
-            <img src="https://flagcdn.com/w20/ru.png" alt="RU">RU
-        </button>
+    <div class="badge">САЈТ У ИЗРАДИ</div>
+
+    <div class="subtitle">Ускоро доступно</div>
+
+    <p class="text">
+        Тренутно радимо на изради новог веб сајта.<br>
+        Хвала на стрпљењу и разумевању.
+    </p>
+
+    <div class="contact">
+        <div class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M2 4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0 8 5 8-5H4zm16 16V8l-8 5-8-5v12h16z"/>
+            </svg>
+            <span>info@manvatax.rs</span>
+        </div>
+
+        <div class="contact-item">
+            <svg class="icon" viewBox="0 0 24 24">
+                <path d="M6.62 10.79a15.053 15.053 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1-.24c1.12.37 2.33.57 3.59.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.26.2 2.47.57 3.59a1 1 0 0 1-.24 1l-2.21 2.2z"/>
+            </svg>
+            <span>+381 64 4203049</span>
+        </div>
     </div>
-</header>
 
-<main>
-    <section class="hero">
-        <div>
-            <h1 data-i18n="hero_title">MAnVaTaX – porodično poverenje, profesionalni rezultati</h1>
-            <p class="lead" data-i18n="hero_lead">
-                MANVATAX pruža usluge računovodstva, knjigovodstva i poreskog savetovanja
-                za paušalce, preduzetnike, DOO i mala preduzeća – uz jasno objašnjenje svake brojke.
-            </p>
-            <div class="hero-actions">
-                <a href="#contact"><button class="btn-primary" data-i18n="hero_cta_primary">Pošaljite upit</button></a>
-                <a href="#services"><button class="btn-outline" data-i18n="hero_cta_secondary">Pogledajte usluge</button></a>
-            </div>
-            <div class="hero-meta" data-i18n="hero_meta">
-                Radimo u skladu sa važećim računovodstvenim i poreskim propisima Republike Srbije,
-                sa fokusom na tačnost, rokove i smanjenje rizika od kazni i zateznih kamata.
-            </div>
-        </div>
-        <div class="hero-card">
-            <h2 data-i18n="hero_card_title">Šta preuzimamo od vas?</h2>
-            <ul class="hero-list">
-                <li data-i18n="hero_item1">Vođenje poslovnih knjiga, sastavljanje finansijskih izveštaja, vođenje poreskih evidencija, obračun zarada i doprinosa</li>
-                <li data-i18n="hero_item2">Priprema i podnošenje poreskih prijava i prijava APR-u</li>
-                <li data-i18n="hero_item3">Poresko savetovanje i poresko planiranje</li>
-            </ul>
-        </div>
-    </section>
+    <footer>
+        © 2026 MANVATAX
+    </footer>
 
-    <section id="services">
-        <h2 data-i18n="services_title">Usluge</h2>
-        <div class="grid-2">
-            <div class="card">
-                <h3 data-i18n="services_block1_title">Knjigovodstvo i računovodstvo</h3>
-                <ul class="clean">
-                    <li data-i18n="services_block1_item1">Vođenje poslovnih knjiga za preduzetnike i DOO</li>
-                    <li data-i18n="services_block1_item2">Mesečni i godišnji obračuni</li>
-                    <li data-i18n="services_block1_item3">Godišnji finansijski izveštaji za APR</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3 data-i18n="services_block2_title">Porezi i PDV</h3>
-                <ul class="clean">
-                    <li data-i18n="services_block2_item1">PDV evidencije i prijave</li>
-                    <li data-i18n="services_block2_item2">Obračun poreza na dobit i prihode</li>
-                    <li data-i18n="services_block2_item3">Savetovanje oko poreskih režima i olakšica</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3 data-i18n="services_block3_title">Zarade i kadrovi</h3>
-                <ul class="clean">
-                    <li data-i18n="services_block3_item1">Obračun zarada, doprinosa i naknada</li>
-                    <li data-i18n="services_block3_item2">Priprema platnih listi i izveštaja</li>
-                    <li data-i18n="services_block3_item3">Saradnja sa kadrovskim službama i HR-om</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3 data-i18n="services_block4_title">Konsalting i osnivanje</h3>
-                <ul class="clean">
-                    <li data-i18n="services_block4_item1">Izbor pravne forme i poreskog tretmana</li>
-                    <li data-i18n="services_block4_item2">Analiza opterećenja i planiranje obaveza</li>
-                    <li data-i18n="services_block4_item3">Pomoć pri osnivanju i promenama u APR-u</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="pricing">
-        <h2 data-i18n="pricing_title">Okvirne cene</h2>
-        <p style="font-size:0.9rem; color:#4b5563; max-width:650px;" data-i18n="pricing_intro">
-            Cene zavise od količine dokumenata, broja zaposlenih i delatnosti. U nastavku su prikazane okvirne početne cene – za tačnu ponudu pošaljite nam kratak opis vašeg biznisa i obima posla.
-        </p>
-        <div class="price-list">
-            <div class="price-item">
-                <strong data-i18n="pricing_block1_title">Paušalni preduzetnici</strong>
-                <div data-i18n="pricing_block1_price">od 60 € mesečno</div>
-                <div class="note" data-i18n="pricing_block1_note">Osnovne prijave, evidencije i konsultacije po potrebi.</div>
-            </div>
-            <div class="price-item">
-                <strong data-i18n="pricing_block2_title">Preduzetnici – dvojno knjigovodstvo</strong>
-                <div data-i18n="pricing_block2_price">od 150 € mesečno</div>
-                <div class="note" data-i18n="pricing_block2_note">Cena zavisi od broja računa i dodatnih evidencija.</div>
-            </div>
-            <div class="price-item">
-                <strong data-i18n="pricing_block3_title">DOO i mala preduzeća</strong>
-                <div data-i18n="pricing_block3_price">od 300 € mesečno</div>
-                <div class="note" data-i18n="pricing_block3_note">Poseban dogovor za veće sisteme i specifične delatnosti.</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <h2 data-i18n="about_title">O nama</h2>
-        <div class="grid-2">
-            <div>
-                <p data-i18n="about_p1">
-                    MANVATAX vodi Petar Manojlović, ekonomista sa iskustvom u finansijama, bankarskom sektoru i analizama, sa praktičnim fokusom na svakodnevne potrebe preduzetnika i malih biznisa.
-                </p>
-                <p data-i18n="about_p2">
-                    Naš cilj je da računovodstvo učinimo jasnim i predvidivim – da znate kolike su obaveze, kada dospevaju i kako odluke u poslovanju utiču na poreze, bilans i likvidnost.
-                </p>
-                <div class="highlight" data-i18n="quote_pacioli">
-                    „Onaj ko vodi knjige mora imati tri vrline: poštenje, strpljenje i jasnoću.“ – Luka Pačoli
-                </div>
-            </div>
-            <div class="card">
-                <h3 data-i18n="principles_title">Naša načela</h3>
-                <ul class="clean">
-                    <li data-i18n="principles_item1">Rad u skladu sa važećim propisima i standardima</li>
-                    <li data-i18n="principles_item2">Diskrecija i poverljivost podataka</li>
-                    <li data-i18n="principles_item3">Objašnjenje brojki na jeziku koji razumete</li>
-                    <li data-i18n="principles_item4">Pravovremeno reagovanje na promene propisa</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2 data-i18n="contact_title">Kontakt</h2>
-
-        <div class="quick-actions">
-            <a class="primary" href="tel:+381644203049" data-i18n="contact_call">Pozovi</a>
-            <a href="mailto:info@manvatax.rs" data-i18n="contact_email">Email</a>
-        </div>
-
-        <div class="contact-grid">
-            <form>
-                <div class="field">
-                    <label for="name" data-i18n="contact_label_name">Ime i prezime / Naziv firme</label>
-                    <input id="name" type="text" placeholder="Vaše ime ili naziv firme">
-                </div>
-                <div class="field">
-                    <label for="email" data-i18n="contact_label_email">Email</label>
-                    <input id="email" type="email" placeholder="ime@primer.rs">
-                </div>
-                <div class="field">
-                    <label for="phone" data-i18n="contact_label_phone">Telefon</label>
-                    <input id="phone" type="text" placeholder="+381 6X XXX XX XX">
-                </div>
-                <div class="field">
-                    <label for="message" data-i18n="contact_label_message">Poruka</label>
-                    <textarea id="message" placeholder=""></textarea>
-                </div>
-                <button type="submit" class="btn-primary" data-i18n="contact_button">Pošaljite poruku</button>
-
-                <!-- broj dole desno u formi -->
-                <div class="form-phone">
-                    <a href="tel:+381644203049">+381 64 420 30 49</a>
-                </div>
-            </form>
-
-            <div class="contact-info">
-                <p><strong data-i18n="contact_info_name">MANVATAX računovodstvo i porezi</strong></p>
-                <p><strong data-i18n="contact_info_email_label">Email:</strong> <span data-i18n="contact_info_email_value">info@manvatax.rs</span></p>
-                <p><strong data-i18n="contact_info_phone_label">Telefon:</strong> <span data-i18n="contact_info_phone_value">+381 64 420 30 49</span></p>
-                <p class="note" data-i18n="contact_info_note">
-                    Pošaljite nam kratak opis vaše delatnosti i obima posla, i javićemo vam se sa predlogom modela saradnje i okvirnom cenom.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="links">
-        <h2 data-i18n="links_title">Korisni linkovi</h2>
-        <div class="links-list">
-            <div class="link-item">
-                <a href="https://www.nbs.rs" target="_blank" rel="noopener" data-i18n="link_nbs">
-                    <img class="link-logo" src="https://www.google.com/s2/favicons?domain=nbs.rs&sz=64" alt="">
-                    Narodna banka Srbije (NBS)
-                </a>
-            </div>
-            <div class="link-item">
-                <a href="https://www.stat.gov.rs" target="_blank" rel="noopener" data-i18n="link_rzs">
-                    <img class="link-logo" src="https://www.google.com/s2/favicons?domain=stat.gov.rs&sz=64" alt="">
-                    Republički zavod za statistiku (RZS)
-                </a>
-            </div>
-            <div class="link-item">
-                <a href="https://www.purs.gov.rs" target="_blank" rel="noopener" data-i18n="link_purs">
-                    <img class="link-logo" src="https://www.google.com/s2/favicons?domain=purs.gov.rs&sz=64" alt="">
-                    Poreska uprava Republike Srbije
-                </a>
-            </div>
-            <div class="link-item">
-                <a href="https://www.apml.gov.rs" target="_blank" rel="noopener" data-i18n="link_spnft">
-                    <img class="link-logo" src="https://www.google.com/s2/favicons?domain=apml.gov.rs&sz=64" alt="">
-                    Uprava za sprečavanje pranja novca (SPNFT)
-                </a>
-            </div>
-            <div class="link-item">
-                <a href="https://www.mfin.gov.rs" target="_blank" rel="noopener" data-i18n="link_mfin">
-                    <img class="link-logo" src="https://www.google.com/s2/favicons?domain=mfin.gov.rs&sz=64" alt="">
-                    Ministarstvo finansija Republike Srbije
-                </a>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
-    &copy; <span id="year"></span> <span data-i18n="footer_text">MANVATAX računovodstvo i porezi. Sva prava zadržana.</span>
-</footer>
-
-<script>
-    const translations = {
-        sr_lat: {
-            title: "MANVATAX računovodstvo i porezi",
-            meta: "MANVATAX računovodstvo i porezi – porodična agencija za računovodstvo, knjigovodstvo i poresko savetovanje.",
-            logo_title: "MANVATAX",
-            logo_subtitle: "Računovodstvo i porezi",
-            nav_services: "Usluge",
-            nav_pricing: "Cene",
-            nav_about: "O nama",
-            nav_contact: "Kontakt",
-            nav_links: "Linkovi",
-            hero_title: "MAnVaTaX – porodično poverenje, profesionalni rezultati",
-            hero_lead: "MANVATAX pruža usluge računovodstva, knjigovodstva i poreskog savetovanja za preduzetnike, paušalce, DOO i mala preduzeća – uz jasno objašnjenje svake brojke.",
-            hero_cta_primary: "Pošaljite upit",
-            hero_cta_secondary: "Pogledajte usluge",
-            hero_meta: "Radimo u skladu sa važećim računovodstvenim i poreskim propisima Republike Srbije, sa fokusom na tačnost, rokove i smanjenje rizika od kazni i zateznih kamata.",
-            hero_card_title: "Šta preuzimamo od vas?",
-            hero_item1: "Vođenje knjiga, PDV, obračun zarada i doprinosa",
-            hero_item2: "Priprema i podnošenje prijava APR-u i Poreskoj upravi",
-            hero_item3: "Poresko savetovanje i planiranje obaveza tokom godine",
-            services_title: "Usluge",
-            services_block1_title: "Knjigovodstvo i računovodstvo",
-            services_block1_item1: "Vođenje poslovnih knjiga za preduzetnike i DOO",
-            services_block1_item2: "Mesečni i godišnji obračuni",
-            services_block1_item3: "Godišnji finansijski izveštaji za APR",
-            services_block2_title: "Porezi i PDV",
-            services_block2_item1: "PDV evidencije i prijave",
-            services_block2_item2: "Obračun poreza na dobit i prihode",
-            services_block2_item3: "Savetovanje oko poreskih režima i olakšica",
-            services_block3_title: "Zarade i kadrovi",
-            services_block3_item1: "Obračun zarada, doprinosa i naknada",
-            services_block3_item2: "Priprema platnih listi i izveštaja",
-            services_block3_item3: "Saradnja sa kadrovskim službama i HR-om",
-            services_block4_title: "Konsalting i osnivanje",
-            services_block4_item1: "Izbor pravne forme i poreskog tretmana",
-            services_block4_item2: "Analiza opterećenja i planiranje obaveza",
-            services_block4_item3: "Pomoć pri osnivanju i promenama u APR-u",
-            pricing_title: "Okvirne cene",
-            pricing_intro: "Cene zavise od količine dokumenata, broja zaposlenih i delatnosti. U nastavku su prikazane okvirne početne cene – za tačnu ponudu pošaljite nam kratak opis vašeg biznisa i obima posla.",
-            pricing_block1_title: "Paušalni preduzetnici",
-            pricing_block1_price: "od 60 € mesečno",
-            pricing_block1_note: "Osnovne prijave, evidencije i konsultacije po potrebi.",
-            pricing_block2_title: "Preduzetnici – dvojno knjigovodstvo",
-            pricing_block2_price: "od 150 € mesečno",
-            pricing_block2_note: "Cena zavisi od broja računa i dodatnih evidencija.",
-            pricing_block3_title: "DOO i mala preduzeća",
-            pricing_block3_price: "od 300 € mesečno",
-            pricing_block3_note: "Poseban dogovor za veće sisteme i specifične delatnosti.",
-            about_title: "O nama",
-            about_p1: "MANVATAX vodi Petar Manojlović, ekonomista sa iskustvom u finansijama, bankarskom sektoru i analizama, sa praktičnim fokusom na svakodnevne potrebe preduzetnika i malih biznisa.",
-            about_p2: "Naš cilj je da računovodstvo učinimo jasnim i predvidivim – da znate kolike su obaveze, kada dospevaju i kako odluke u poslovanju utiču na poreze, bilans i likvidnost.",
-            quote_pacioli: "„Onaj ko vodi knjige mora imati tri vrline: poštenje, strpljenje i jasnoću.“ – Luka Pačoli",
-            principles_title: "Naša načela",
-            principles_item1: "Rad u skladu sa važećim propisima i standardima",
-            principles_item2: "Diskrecija i poverljivost podataka",
-            principles_item3: "Objašnjenje brojki na jeziku koji razumete",
-            principles_item4: "Pravovremeno reagovanje na promene propisa",
-            contact_title: "Kontakt",
-            contact_label_name: "Ime i prezime / Naziv firme",
-            contact_label_email: "Email",
-            contact_label_phone: "Telefon",
-            contact_label_message: "Poruka",
-            contact_button: "Pošaljite poruku",
-            contact_info_name: "MANVATAX računovodstvo i porezi",
-            contact_info_email_label: "Email:",
-            contact_info_email_value: "info@manvatax.rs",
-            contact_info_phone_label: "Telefon:",
-            contact_info_phone_value: "+381 64 420 30 49",
-            contact_info_note: "Pošaljite nam kratak opis vaše delatnosti i obima posla, i javićemo vam se sa predlogom modela saradnje i okvirnom cenom.",
-            contact_call: "Pozovi",
-            contact_email: "Email",
-            links_title: "Korisni linkovi",
-            link_nbs: "Narodna banka Srbije (NBS)",
-            link_rzs: "Republički zavod za statistiku (RZS)",
-            link_purs: "Poreska uprava Republike Srbije",
-            link_spnft: "Uprava za sprečavanje pranja novca (SPNFT)",
-            link_mfin: "Ministarstvo finansija Republike Srbije",
-            footer_text: "MANVATAX računovodstvo i porezi. Sva prava zadržana."
-        },
-        sr_cyr: {
-            title: "MANVATAX рачуноводство и порези",
-            meta: "MANVATAX рачуноводство и порези – породична агенција за рачуноводство, књиговодство и пореско саветовање.",
-            logo_title: "MANVATAX",
-            logo_subtitle: "Рачуноводство и порези",
-            nav_services: "Услуге",
-            nav_pricing: "Цене",
-            nav_about: "О нама",
-            nav_contact: "Контакт",
-            nav_links: "Линкови",
-            hero_title: "MAnVaTaX – породично поверење, професионални резултати",
-            hero_lead: "MANVATAX пружа услуге рачуноводства, књиговодства и пореског саветовања за предузетнике, паушалце, ДОО и мала предузећа – уз јасно објашњење сваке бројке.",
-            hero_cta_primary: "Пошаљите упит",
-            hero_cta_secondary: "Погледајте услуге",
-            hero_meta: "Радимо у складу са важећим рачуноводственим и пореским прописима Републике Србије, са фокусом на тачност, рокове и смањење ризика од казни и затезних камата.",
-            hero_card_title: "Шта преузимамо од вас?",
-            hero_item1: "Вођење књига, ПДВ, обрачун зарада и доприноса",
-            hero_item2: "Припрема и подношење пријава АПР-у и Пореској управи",
-            hero_item3: "Пореско саветовање и планирање обавеза током године",
-            services_title: "Услуге",
-            services_block1_title: "Књиговодство и рачуноводство",
-            services_block1_item1: "Вођење пословних књига за предузетнике и ДОО",
-            services_block1_item2: "Месечни и годишњи обрачуни",
-            services_block1_item3: "Годишњи финансијски извештаји за АПР",
-            services_block2_title: "Порези и ПДВ",
-            services_block2_item1: "ПДВ евиденције и пријаве",
-            services_block2_item2: "Обрачун пореза на добит и приходе",
-            services_block2_item3: "Саветовање око пореских режима и олакшица",
-            services_block3_title: "Зараде и кадрови",
-            services_block3_item1: "Обрачун зарада, доприноса и накнада",
-            services_block3_item2: "Припрема платних листи и извештаја",
-            services_block3_item3: "Сарадња са кадровским службама и HR-ом",
-            services_block4_title: "Консалтинг и оснивање",
-            services_block4_item1: "Избор правне форме и пореског третмана",
-            services_block4_item2: "Анализа оптерећења и планирање обавеза",
-            services_block4_item3: "Помоћ при оснивању и променама у АПР-у",
-            pricing_title: "Оквирне цене",
-            pricing_intro: "Цене зависе од количине докумената, броја запослених и делатности. У наставку су приказане оквирне почетне цене – за тачну понуду пошаљите нам кратак опис вашег бизниса и обима посла.",
-            pricing_block1_title: "Паушални предузетници",
-            pricing_block1_price: "од 60 € месечно",
-            pricing_block1_note: "Основне пријаве, евиденције и консултације по потреби.",
-            pricing_block2_title: "Предузетници – двојно књиговодство",
-            pricing_block2_price: "од 150 € месечно",
-            pricing_block2_note: "Цена зависи од броја рачуна и додатних евиденција.",
-            pricing_block3_title: "ДОО и мала предузећа",
-            pricing_block3_price: "од 300 € месечно",
-            pricing_block3_note: "Посебан договор за веће системе и специфичне делатности.",
-            about_title: "О нама",
-            about_p1: "MANVATAX води Петар Манојловић, економиста са искуством у финансијама, банкарском сектору и анализама, са практичним фокусом на свакодневне потребе предузетника и малих бизниса.",
-            about_p2: "Наш циљ је да рачуноводство учинимо јасним и предвидивим – да знате колике су обавезе, када доспевају и како одлуке у пословању утичу на порезе, биланс и ликвидност.",
-            quote_pacioli: "„Онај ко води књиге мора имати три врлине: поштење, стрпљење и јасноћу.“ – Лука Паћоли",
-            principles_title: "Наша начела",
-            principles_item1: "Рад у складу са важећим прописима и стандардима",
-            principles_item2: "Дискретност и поверљивост података",
-            principles_item3: "Објашњење бројки на језику који разумете",
-            principles_item4: "Правовремено реаговање на промене прописа",
-            contact_title: "Контакт",
-            contact_label_name: "Име и презиме / Назив фирме",
-            contact_label_email: "Имејл",
-            contact_label_phone: "Телефон",
-            contact_label_message: "Порука",
-            contact_button: "Пошаљите поруку",
-            contact_info_name: "MANVATAX рачуноводство и порези",
-            contact_info_email_label: "Имејл:",
-            contact_info_email_value: "info@manvatax.rs",
-            contact_info_phone_label: "Телефон:",
-            contact_info_phone_value: "+381 64 420 30 49",
-            contact_info_note: "Пошаљите нам кратак опис ваше делатности и обима посла, и јавићемо вам се са предлогом модела сарадње и оквирном ценом.",
-            contact_call: "Позови",
-            contact_email: "Имејл",
-            links_title: "Корисни линкови",
-            link_nbs: "Народна банка Србије (НБС)",
-            link_rzs: "Републички завод за статистику (РЗС)",
-            link_purs: "Пореска управа Републике Србије",
-            link_spnft: "Управа за спречавање прања новца (СПНФТ)",
-            link_mfin: "Министарство финансија Републике Србије",
-            footer_text: "MANVATAX рачуноводство и порези. Сва права задржана."
-        },
-        en: {
-            title: "MANVATAX Accounting & Tax",
-            meta: "MANVATAX – family-based accounting, bookkeeping and tax advisory for entrepreneurs and small businesses.",
-            logo_title: "MANVATAX",
-            logo_subtitle: "Accounting & Tax",
-            nav_services: "Services",
-            nav_pricing: "Pricing",
-            nav_about: "About",
-            nav_contact: "Contact",
-            nav_links: "Links",
-            hero_title: "MAnVaTaX – family trust, professional results",
-            hero_lead: "MANVATAX provides accounting, bookkeeping and tax advisory services for entrepreneurs, freelancers, flat-rate taxpayers, LLCs and small businesses – with a clear explanation of every number.",
-            hero_cta_primary: "Request a quote",
-            hero_cta_secondary: "View services",
-            hero_meta: "We operate in line with Serbian accounting and tax regulations, focusing on accuracy, deadlines and reducing the risk of penalties and late interest.",
-            hero_card_title: "What do we take over from you?",
-            hero_item1: "Bookkeeping, VAT, payroll and social contributions",
-            hero_item2: "Preparation and submission of filings to the BRA and Tax Administration",
-            hero_item3: "Tax advisory and planning of obligations throughout the year",
-            services_title: "Services",
-            services_block1_title: "Bookkeeping & accounting",
-            services_block1_item1: "Bookkeeping for entrepreneurs and LLCs",
-            services_block1_item2: "Monthly and annual closing",
-            services_block1_item3: "Annual financial statements for the Business Registers Agency",
-            services_block2_title: "Taxes & VAT",
-            services_block2_item1: "VAT records and returns",
-            services_block2_item2: "Corporate and personal income tax calculation",
-            services_block2_item3: "Advisory on tax regimes and incentives",
-            services_block3_title: "Payroll & HR support",
-            services_block3_item1: "Calculation of salaries, contributions and allowances",
-            services_block3_item2: "Preparation of payslips and reports",
-            services_block3_item3: "Cooperation with HR and internal departments",
-            services_block4_title: "Consulting & company setup",
-            services_block4_item1: "Choice of legal form and tax treatment",
-            services_block4_item2: "Analysis of tax burden and planning of obligations",
-            services_block4_item3: "Support with registration and changes at the registers",
-            pricing_title: "Indicative pricing",
-            pricing_intro: "Pricing depends on the number of documents, employees and the specifics of your business. Below are indicative starting prices – for an exact quote, send us a short description of your business and workload.",
-            pricing_block1_title: "Flat-rate entrepreneurs",
-            pricing_block1_price: "from 60 € per month",
-            pricing_block1_note: "Basic filings, records and on-demand advisory.",
-            pricing_block2_title: "Entrepreneurs – double-entry bookkeeping",
-            pricing_block2_price: "from 150 € per month",
-            pricing_block2_note: "Price depends on the number of invoices and additional records.",
-            pricing_block3_title: "LLCs and small companies",
-            pricing_block3_price: "from 300 € per month",
-            pricing_block3_note: "Individual arrangements for larger structures and specific industries.",
-            about_title: "About us",
-            about_p1: "MANVATAX is led by Petar Manojlović, an economist with experience in finance, the banking sector and financial analysis, with a practical focus on everyday needs of entrepreneurs and small businesses.",
-            about_p2: "Our goal is to make accounting clear and predictable – so that you know your obligations, when they fall due, and how business decisions affect taxes, financial statements and liquidity.",
-            quote_pacioli: "\"Whoever keeps the books must possess three virtues: honesty, patience, and clarity.\" – Luca Pacioli",
-            principles_title: "Our principles",
-            principles_item1: "Full compliance with applicable regulations and standards",
-            principles_item2: "Discretion and confidentiality of client data",
-            principles_item3: "Explaining figures in plain language",
-            principles_item4: "Timely reaction to changes in regulations",
-            contact_title: "Contact",
-            contact_label_name: "Full name / Company name",
-            contact_label_email: "Email",
-            contact_label_phone: "Phone",
-            contact_label_message: "Message",
-            contact_button: "Send message",
-            contact_info_name: "MANVATAX Accounting & Tax",
-            contact_info_email_label: "Email:",
-            contact_info_email_value: "info@manvatax.rs",
-            contact_info_phone_label: "Phone:",
-            contact_info_phone_value: "+381 64 420 30 49",
-            contact_info_note: "Send us a short description of your activity and workload and we will get back to you with a cooperation model and indicative price.",
-            contact_call: "Call",
-            contact_email: "Email",
-            links_title: "Useful links",
-            link_nbs: "National Bank of Serbia (NBS)",
-            link_rzs: "Statistical Office of the Republic of Serbia",
-            link_purs: "Tax Administration of the Republic of Serbia",
-            link_spnft: "Administration for the Prevention of Money Laundering",
-            link_mfin: "Ministry of Finance of the Republic of Serbia",
-            footer_text: "MANVATAX Accounting & Tax. All rights reserved."
-        },
-        ru: {
-            title: "MANVATAX Бухгалтерия и налоги",
-            meta: "MANVATAX – семейная бухгалтерская и налоговая практика для предпринимателей и малых компаний.",
-            logo_title: "MANVATAX",
-            logo_subtitle: "Бухгалтерия и налоги",
-            nav_services: "Услуги",
-            nav_pricing: "Цены",
-            nav_about: "О нас",
-            nav_contact: "Контакты",
-            nav_links: "Ссылки",
-            hero_title: "MAnVaTaX – семейное доверие и профессиональный результат",
-            hero_lead: "MANVATAX предоставляет услуги по бухгалтерскому учёту, ведению книг и налоговому консультированию для предпринимателей, фрилансеров, плательщиков паушального налога, ООО и малых предприятий – с понятным объяснением каждой цифры.",
-            hero_cta_primary: "Отправить запрос",
-            hero_cta_secondary: "Услуги",
-            hero_meta: "Мы работаем в соответствии с сербским законодательством в области бухгалтерского учёта и налогообложения, уделяя особое внимание точности, срокам и снижению риска штрафов и пени.",
-            hero_card_title: "Что мы берём на себя?",
-            hero_item1: "Ведение учёта, НДС, расчёт заработной платы и взносов",
-            hero_item2: "Подготовка и подача отчётности в регистр и налоговую службу",
-            hero_item3: "Налоговое консультирование и планирование налоговой нагрузки",
-            services_title: "Услуги",
-            services_block1_title: "Бухгалтерский учёт и отчётность",
-            services_block1_item1: "Учёт для предпринимателей и ООО",
-            services_block1_item2: "Месячные и годовые закрытия",
-            services_block1_item3: "Годовая финансовая отчётность для регистрационного агентства",
-            services_block2_title: "Налоги и НДС",
-            services_block2_item1: "Учёт НДС и налоговые декларации",
-            services_block2_item2: "Расчёт налога на прибыль и подоходного налога",
-            services_block2_item3: "Консультирование по налоговым режимам и льготам",
-            services_block3_title: "Зарплата и персонал",
-            services_block3_item1: "Расчёт заработной платы, взносов и компенсаций",
-            services_block3_item2: "Подготовка расчётных листков и отчётов",
-            services_block3_item3: "Сотрудничество с HR и внутренними службами",
-            services_block4_title: "Консалтинг и регистрация",
-            services_block4_item1: "Выбор правовой формы и налогового режима",
-            services_block4_item2: "Анализ налоговой нагрузки и планирование обязательств",
-            services_block4_item3: "Поддержка при регистрации и изменениях в реестре",
-            pricing_title: "Ориентировочные цены",
-            pricing_intro: "Стоимость зависит от количества документов, числа сотрудников и особенностей деятельности. Ниже приведены ориентировочные начальные цены – для точного предложения пришлите краткое описание бизнеса.",
-            pricing_block1_title: "Предприниматели на паушале",
-            pricing_block1_price: "от 60 € в месяц",
-            pricing_block1_note: "Базовая отчётность, учёт и консультации по мере необходимости.",
-            pricing_block2_title: "Предприниматели с двойной записью",
-            pricing_block2_price: "от 150 € в месяц",
-            pricing_block2_note: "Стоимость зависит от количества счетов и регистров.",
-            pricing_block3_title: "ООО и малые компании",
-            pricing_block3_price: "от 300 € в месяц",
-            pricing_block3_note: "Отдельные условия для более крупных структур и специфических отраслей.",
-            about_title: "О нас",
-            about_p1: "MANVATAX возглавляет Петар Манојлович, экономист с опытом работы в финансах, банковском секторе и аналитике, с практической ориентацией на ежедневные потребности предпринимателей и малых компаний.",
-            about_p2: "Наша цель – сделать бухгалтерию понятной и предсказуемой, чтобы вы знали свои обязательства, сроки их исполнения и влияние деловых решений на налоги, отчётность и ликвидность.",
-            quote_pacioli: "«Тот, кто ведёт книги, должен обладать тремя добродетелями: честностью, терпением и ясностью.» – Лука Пачоли",
-            principles_title: "Наши принципы",
-            principles_item1: "Работа в полном соответствии с действующими нормами и стандартами",
-            principles_item2: "Конфиденциальность и защита данных клиентов",
-            principles_item3: "Понятное объяснение финансовых показателей",
-            principles_item4: "Своевременная реакция на изменения законодательства",
-            contact_title: "Контакты",
-            contact_label_name: "ФИО / Название компании",
-            contact_label_email: "E-mail",
-            contact_label_phone: "Телефон",
-            contact_label_message: "Сообщение",
-            contact_button: "Отправить сообщение",
-            contact_info_name: "MANVATAX Бухгалтерия и налоги",
-            contact_info_email_label: "E-mail:",
-            contact_info_email_value: "info@manvatax.rs",
-            contact_info_phone_label: "Телефон:",
-            contact_info_phone_value: "+381 64 420 30 49",
-            contact_info_note: "Пришлите краткое описание деятельности и объёма работы – мы свяжемся с вами с предложением формата сотрудничества и ориентировочной стоимостью.",
-            contact_call: "Позвонить",
-            contact_email: "E-mail",
-            links_title: "Полезные ссылки",
-            link_nbs: "Народный банк Сербии (NBS)",
-            link_rzs: "Статистическое управление Республики Сербии",
-            link_purs: "Налоговая служба Республики Сербии",
-            link_spnft: "Управление по предотвращению отмывания денег",
-            link_mfin: "Министерство финансов Республики Сербии",
-            footer_text: "MANVATAX Бухгалтерия и налоги. Все права защищены."
-        }
-    };
-
-    function applyTranslations(lang) {
-        const dict = translations[lang] || translations.sr_cyr;
-        document.documentElement.lang = (lang === "sr_lat" || lang === "sr_cyr") ? "sr" : (lang === "en" ? "en" : "ru");
-        if (dict.title) document.title = dict.title;
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc && dict.meta) metaDesc.setAttribute('content', dict.meta);
-
-        document.querySelectorAll("[data-i18n]").forEach(el => {
-            const key = el.getAttribute("data-i18n");
-            if (dict[key]) el.textContent = dict[key];
-        });
-    }
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // default: ćirilica
-    applyTranslations("sr_cyr");
-
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const lang = btn.getAttribute("data-lang");
-            document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            applyTranslations(lang);
-        });
-    });
-
-    // hamburger meni (mobile)
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
-
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener("click", () => {
-            const isOpen = navLinks.classList.toggle("open");
-            menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
-
-        navLinks.querySelectorAll("a").forEach(a => {
-            a.addEventListener("click", () => {
-                navLinks.classList.remove("open");
-                menuBtn.setAttribute("aria-expanded", "false");
-            });
-        });
-
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 768) {
-                navLinks.classList.remove("open");
-                menuBtn.setAttribute("aria-expanded", "false");
-            }
-        });
-    }
-</script>
+</div>
 
 </body>
 </html>
-
